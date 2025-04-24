@@ -17,7 +17,7 @@
 
 #define RIGHT2_DIR_PIN 24
 #define RIGHT2_STOP_PIN 26
-#define RIGHT2_BRAKE_PIN 26
+#define RIGHT2_BRAKE_PIN 27
 
 #define CH1_PIN 3
 #define CH2_PIN 2
