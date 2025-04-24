@@ -2,10 +2,10 @@
 #include <ServoInput.h>
 
 // Left side motors
-#define LEFT1_DIR_PIN 3 // Green
+#define LEFT1_DIR_PIN 4 // Green
 #define LEFT1_STOP_PIN 6 // Yellow
-#define LEFT1_BRAKE_PIN 6 // Yellow
-#define LEFT1_PWM_PIN 5 // Blue
+#define LEFT1_BRAKE_PIN 5 // Yellow
+#define LEFT1_PWM_PIN 7 // Blue
 
 #define LEFT2_DIR_PIN 11
 #define LEFT2_STOP_PIN 12
@@ -86,19 +86,21 @@ void setup() {
 }
 
 void run_motor(int speed_pin, int dir_pin, int speed) {
-    if (speed < 0) {
-        digitalWrite(dir_pin, LOW); // Set direction to reverse
-    } else {
-        digitalWrite(dir_pin, HIGH); // Set direction to forward
-    }
+    // if (speed < 0) {
+    //     digitalWrite(dir_pin, LOW); // Set direction to reverse
+    // } else {
+    //     digitalWrite(dir_pin, HIGH); // Set direction to forward
+    // }
 
     speed = abs(speed);
 
-    if (speed > MOTOR_MAX_SPEED) {
-        speed = MOTOR_MAX_SPEED;
-    } else if (speed < MOTOR_MIN_SPEED) {
-        speed = MOTOR_MIN_SPEED;
-    }
+    // if (speed > MOTOR_MAX_SPEED) {
+    //     speed = MOTOR_MAX_SPEED;
+    // } else if (speed < MOTOR_MIN_SPEED) {
+    //     speed = MOTOR_MIN_SPEED;
+    // }
+
+    Serial.println(speed);
 
     analogWrite(speed_pin, speed);
 }
@@ -138,10 +140,10 @@ void loop() {
         // Actuate motors based on smoothed speeds
         if (abs(throttle_val) > 0.05)
         {
-            run_motor(LEFT1_STOP_PIN, LEFT1_DIR_PIN, smoothedSpeedLeft);
-            run_motor(LEFT2_STOP_PIN, LEFT2_DIR_PIN, smoothedSpeedLeft);
-            run_motor(RIGHT1_STOP_PIN, RIGHT1_DIR_PIN, smoothedSpeedRight);
-            run_motor(RIGHT2_STOP_PIN, RIGHT2_DIR_PIN, smoothedSpeedRight);
+            run_motor(LEFT1_PWM_PIN, LEFT1_DIR_PIN, smoothedSpeedLeft);
+            run_motor(LEFT2_PWM_PIN, LEFT2_DIR_PIN, smoothedSpeedLeft);
+            run_motor(RIGHT1_PWM_PIN, RIGHT1_DIR_PIN, smoothedSpeedRight);
+            run_motor(RIGHT2_PWM_PIN, RIGHT2_DIR_PIN, smoothedSpeedRight);
         }
         else
         {
