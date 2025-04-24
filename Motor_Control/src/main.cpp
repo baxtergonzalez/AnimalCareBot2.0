@@ -76,13 +76,22 @@ void setup() {
     }
 }
 
-void run_motor(int pin, int speed) {
+void run_motor(int speed_pin, int dir_pin, int speed) {
+    if (speed < 0) {
+        digitalWrite(dir_pin, LOW); // Set direction to reverse
+    } else {
+        digitalWrite(dir_pin, HIGH); // Set direction to forward
+    }
+
+    speed = abs(speed);
+
     if (speed > MOTOR_MAX_SPEED) {
         speed = MOTOR_MAX_SPEED;
     } else if (speed < MOTOR_MIN_SPEED) {
         speed = MOTOR_MIN_SPEED;
     }
-    analogWrite(pin, speed);
+
+    analogWrite(speed_pin, speed);
 }
 
 void brake_motor(int pin) {
@@ -120,10 +129,10 @@ void loop() {
         // Actuate motors based on smoothed speeds
         if (abs(throttle_val) > 0.05)
         {
-            run_motor(LEFT1_STOP_PIN, smoothedSpeedLeft);
-            run_motor(LEFT2_STOP_PIN, smoothedSpeedLeft);
-            run_motor(RIGHT1_STOP_PIN, smoothedSpeedRight);
-            run_motor(RIGHT2_STOP_PIN, smoothedSpeedRight);
+            run_motor(LEFT1_STOP_PIN, LEFT1_DIR_PIN, smoothedSpeedLeft);
+            run_motor(LEFT2_STOP_PIN, LEFT2_DIR_PIN, smoothedSpeedLeft);
+            run_motor(RIGHT1_STOP_PIN, RIGHT1_DIR_PIN, smoothedSpeedRight);
+            run_motor(RIGHT2_STOP_PIN, RIGHT2_DIR_PIN, smoothedSpeedRight);
         }
         else
         {
