@@ -1,0 +1,74 @@
+Animal Care Bot File Tree
+Created Oct 31, 2024 by Olivia Laurel
+
+Link to notes and explanation about the file tree:
+https://txst.sharepoint.com/:w:/r/sites/GRP-AnimalCareBotProject/Shared%20Documents/General/Laurel/AnimalCareBot%20Research.docx?d=wf1cbc5c5e7764a57b95083d53ebd61d3&csf=1&web=1&e=vdokxy 
+
+animal_care_bot_project/ 
+
+├── src/ 
+
+│   ├── jetson_nano/ 
+
+│   │   ├── camera/ 
+
+│   │   │   ├── camera_node.py      # ROS2 node for camera data 
+
+│   │   │   ├── camera_processing.py # Image processing and analysis 
+
+│   │   │   └── camera_utils.py      # Helper functions for camera 
+
+│   │   ├── lidar/ 
+
+│   │   │   ├── lidar_node.py       # ROS2 node for LiDAR data 
+
+│   │   │   └── lidar_utils.py      # LiDAR data processing 
+
+│   │   ├── temp_sensor/ 
+
+│   │   │   └── temp_sensor_node.py # ROS2 node for temperature data 
+
+│   │   └── motor_controller/ 
+
+│   │       ├── motor_node.cpp      # ROS2 node for motor control in C++ 
+
+│   │       └── motor_utils.cpp     # Motor utility functions 
+
+│   └── arduino/ 
+
+│       ├── camera_interface.ino    # Arduino code for camera 
+
+│       ├── lidar_interface.ino     # Arduino code for LiDAR 
+
+│       ├── temp_sensor_interface.ino # Arduino code for temp sensor 
+
+│       └── motor_interface.ino     # Arduino code for motors 
+
+├── config/ 
+
+│   ├── jetson_params.yaml          # Parameters for Jetson nodes 
+
+│   └── arduino_params.yaml         # Parameters for Arduino nodes 
+
+├── launch/ 
+
+│   ├── bringup.launch.py           # Main launch file to bring up all nodes 
+
+│   ├── camera.launch.py            # Launch for camera node 
+
+│   ├── lidar.launch.py             # Launch for LiDAR node 
+
+│   ├── temp_sensor.launch.py       # Launch for temperature sensor node 
+
+│   └── motor.launch.py             # Launch for motor node 
+
+├── scripts/ 
+
+│   ├── data_collection.py          # Script to collect and store data 
+
+│   └── data_communication.py       # Communication between Jetson and Arduinos 
+
+├── CMakeLists.txt                  # ROS2 build configuration 
+
+└── package.xml                     # ROS2 package metadata
+
