@@ -2,22 +2,27 @@
 #include <ServoInput.h>
 
 // Left side motors
-#define LEFT1_DIR_PIN 5 // Green
+#define LEFT1_DIR_PIN 3 // Green
 #define LEFT1_STOP_PIN 6 // Yellow
 #define LEFT1_BRAKE_PIN 6 // Yellow
+#define LEFT1_PWM_PIN 5 // Blue
 
 #define LEFT2_DIR_PIN 11
 #define LEFT2_STOP_PIN 12
-#define LEFT2_BRAKE_PIN 12
+#define LEFT2_BRAKE_PIN 13
+#define LEFT2_PWM_PIN 14 
 
 // Right side motors
 #define RIGHT1_DIR_PIN 32
 #define RIGHT1_STOP_PIN 34
-#define RIGHT1_BRAKE_PIN 34
+#define RIGHT1_BRAKE_PIN 35
+#define RIGHT1_PWM_PIN 36 // Blue
+
 
 #define RIGHT2_DIR_PIN 24
 #define RIGHT2_STOP_PIN 26
 #define RIGHT2_BRAKE_PIN 27
+#define RIGHT2_PWM_PIN 28 // Blue
 
 #define CH1_PIN 3
 #define CH2_PIN 2
@@ -56,18 +61,22 @@ void setup() {
     pinMode(LEFT1_DIR_PIN, OUTPUT);
     pinMode(LEFT1_STOP_PIN, OUTPUT);
     pinMode(LEFT1_BRAKE_PIN, OUTPUT);
+    pinMode(LEFT1_PWM_PIN, OUTPUT);
 
     pinMode(LEFT2_DIR_PIN, OUTPUT);
     pinMode(LEFT2_STOP_PIN, OUTPUT);
     pinMode(LEFT2_BRAKE_PIN, OUTPUT);
+    pinMode(LEFT2_PWM_PIN, OUTPUT);
 
     pinMode(RIGHT1_DIR_PIN, OUTPUT);
     pinMode(RIGHT1_STOP_PIN, OUTPUT);
     pinMode(RIGHT1_BRAKE_PIN, OUTPUT);
+    pinMode(RIGHT1_PWM_PIN, OUTPUT);
 
     pinMode(RIGHT2_DIR_PIN, OUTPUT);
     pinMode(RIGHT2_STOP_PIN, OUTPUT);
     pinMode(RIGHT2_BRAKE_PIN, OUTPUT);
+    pinMode(RIGHT1_PWM_PIN, OUTPUT);
 
 
     while (throttle.available() == false || steering.available() == false){
